@@ -1,0 +1,249 @@
+git:
+
+git is a distributed version control system(dvcs)
+
+1.each user has a local copy of the complete history of the project,
+
+
+which is called as a repository
+
+
+2.users can work offline
+
+3.can easily syncronize repositry
+
+
+pull -> commit-> push
+
+
+after installing git cli,configure your details:
+
+main commands:
+
+add, commit, log status, push,pull,flags etc
+
+
+in cli,cmd
+
+git --version
+
+git help
+
+
+
+
+to congifure first time:
+
+git config  --global user.name raja
+
+git config  --global user.email thinksurfmedia@gmail.com
+
+git status: to check to status of folder(repository)
+
+
+to initialize with git: git init
+
+
+terms: branch,master,commit
+
+
+
+git working tree:
+
+use of git add and git commit
+
+
+--1.working directory
+  
+----git add
+
+  2.staging area(production time)
+
+--git commit (adding referal to per changes)
+
+  3.repository
+
+to make a file using git bash:
+
+--touch index.html
+
+to open a file with gitbash:
+
+notepad index.html
+
+to track file in git:
+
+git add index.html
+
+to track multiple file :
+
+git add .
+
+git commit to give referal to the  changes that you have made:
+
+git commit -m 'index file added'
+
+{ here -m means message}
+
+
+to check the commit id:
+
+git log
+
+or 
+
+git log --oneline
+
+
+
+-----------------------------------------------
+
+github : it's a code hosting platform for version control and collaboration
+
+it lets you and others work together on projects from anywhere.
+
+------------------
+
+how to add local directory on online(github):
+
+to check the file content in git bash
+
+---cat index.html
+
+--to see commit in limitation (last most commits)
+
+git log --oneline -2 (here it will show last two commit)
+
+
+use of git remote:
+
+--git remote add origin www.yourgitlink.com
+
+and to check remote connection:
+ 
+--git remote
+
+and to check remote version
+
+--git remote -v 
+
+
+to add your local directory to remote directory
+
+--git remote add origin www.yourgitlink.com
+
+--git push -u origin master
+
+---and after uploading the file if you change anything and want to show in 
+your git hub
+
+you just have to:
+
+notepad index.html
+
+git add .
+
+git commit -m ''
+
+git status
+
+git log -1
+
+
+git push -u origin master
+
+(u is for tracking)
+
+
+---------------------------------
+
+Branch(make a copy) in Git
+
+A branch will allow to make a "copy" while not affecting the original branch.
+
+--master (it's a main or master branch)
+
+to check your braches in git
+
+--git branch
+
+
+To make a local branch:
+
+git branch local-raja
+
+(local-raja is your branch name)
+
+
+to access the local brach(it will copy the master's branch):
+
+--git checkout local-raja
+
+after changes
+
+--git add .
+
+--git status
+
+ git commit -m ''
+
+check the alias (origin mostly)
+
+git remote
+
+then push it
+
+--git push -u origin local-raja
+
+
+when you want to go from one branch to another branch
+
+git checkout master(destination branch)
+
+
+----------------
+
+to merge one code to another code:
+
+git merge local-raja
+
+
+-----git clone----
+
+git clone is used to create a local copy of a remote repository
+
+
+when to use?
+
+no local repositry is there
+
+
+
+if we clone it using git then we dont have use git init and git add .
+
+
+make a directory
+
+then  clone it:
+
+
+--git clone www.clonelink.com
+
+
+----to see the list of the hidden file--
+
+--ls -a
+
+
+if you dont want to display your hidden files then put it in your .gitignore
+
+file--
+
+first make a .gitignore file
+
+--touch .gitignore
+
+write the file names  you want to hide
+
+then
+-- git push

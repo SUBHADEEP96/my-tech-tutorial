@@ -1,0 +1,53 @@
+1401593
+	name="query"
+console.warn(res.data);
+
+const resultNotFoundMsg = !res.data.link.length
+				? 'There are no more search results. Please try a new search.'
+				: '';
+
+
+this.setState({
+				results: res.data.link,
+				message: resultNotFoundMsg,
+				loading: false,
+			});
+
+
+
+			this.setState({
+				results: res.data.hits,
+				
+				loading: true
+			});
+
+
+results.map(result=>{
+				 
+				 return(
+				 <a href={result.link}>
+				 <h6>{result.link}</h6>
+				 </a>
+				 )
+				 
+			 })
+
+
+Object.keys(results).length && 
+
+
+blog link:https://medium.com/@imranhsayed/live-search-with-react-instant-search-pagination-6acd476af756
+
+
+video link:https://www.youtube.com/watch?v=bv3U-Y3fmsA
+
+
+
+ console.log(result.link)
+				 return(
+				 <div>
+				 <a key={result.status} href={result.link} >
+				 <h6>{result.link}</h6>
+				 </a>
+				 </div>
+				 )

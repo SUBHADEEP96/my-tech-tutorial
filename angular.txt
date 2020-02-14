@@ -1,0 +1,475 @@
+
+
+
+
+
+
+
+angular js module:
+
+angular js module defines an application
+
+the module is a container for different parts of an application
+
+the module is a container for the application controllers.
+
+a module is used as a Main() method . Controller always belongs to a module.
+
+
+creating a module
+
+
+a module is created by angular js function angular.module
+
+
+u can add controllers, directives, filters, and more to your anguar app
+
+
+Adding a Controller:
+
+Add a controller to your app and refer to the controller with ng-controller
+
+directive:
+
+eg:
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo</title>
+	<!--
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+-->
+
+<!--angular cdn-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+</head>
+<body ng-app="myapp">
+<!--
+<input type="text" ng-model="t1">
+<p>Hello {{t1}}</p>
+
+<!--angular expression
+<div ng-init="a=5;b=7">{{a+b}}
+
+<h1 ng-bind="a"></h1>
+
+</div>
+
+<div ng-init="arr=[1,2,3,4]">
+
+<p>{{arr[2]}}</p>
+
+
+</div>
+-->
+
+
+<div ng-controller="myctrl">
+
+<h1>{{first+" "+last}}</h1>
+
+</div>
+
+
+<div mydirective></div>
+
+
+<!--another way to display-->
+
+
+<mydirective></mydirective>
+
+
+<script>
+/* in javascript
+
+
+function myfun(){
+
+var x = document.getElementById('t1');
+
+document.getElementById('msg').innerHTML=x.value;
+
+}
+*/
+
+/* in jquery
+
+$(document).ready(function(){
+
+var t1= $('#t1');
+
+var msg = $('#msg');
+
+t1.keyup(function(){
+
+msg.text('hello'+' '+t1.val());
+
+})
+
+
+
+});
+*/
+
+/* in angular js */
+
+/*declare a module in angular*/
+/*var myapp=angular.module("myapp",[])*/
+
+/*now to make a controller in module*/
+/*
+myapp.controller("myctrl",function($scope){
+
+$scope.first="raja";
+
+$scope.last="paul";
+
+})
+*/
+/*way to declare a module*/
+
+var myapp=angular.module("myapp",[]);
+
+//make a controller
+
+myapp.controller("myctrl",function($scope){
+
+$scope.first="raja";
+
+$scope.last="paul";
+
+});
+//making my own directive
+
+myapp.directive("mydirective",function(){
+
+return{
+
+template:'Hello, Welcome to Thinksurfmedia'
+
+}
+
+})
+</script>
+</body>
+</html>
+
+
+More info on directives on angular js:
+
+angular js lets you extend HTML with new attributes called Directives.
+
+
+ng-app: to initialize
+
+ng-model: it binds the value of HTML controls (input,select,textarea)
+
+ng-repeat: it repeats an html element
+
+restricting directive:
+
+var myapp=angular.module('myapp',[]);
+
+myapp.directive('testDirective',function(){
+
+return{
+
+restrict:"EA",//A,EA,C,E
+template:'<h1>Hi, Welcome to Thinksurfmedia</h1>'
+
+
+}
+
+
+})
+
+
+
+
+validate user input(ng-show,$error):
+
+
+<form name="myform">
+
+<input type="email" name="mail" ng-model="text">
+
+<span ng-show="myform.mail.$error.email">Email Id is not Valid</span>
+
+</form>
+
+
+$scope:
+
+it's the binding part between the HTML(view) and javascript(controller)
+
+The scope is an object with the available properties and methods.
+
+ 
+it's availabe for both the view and the controller.
+
+Root Scope:
+use of root scope : for expanding the scope in element 
+
+<div ng-app="mapp" >
+
+<div ng-controller="ctrl">
+<p> {{name}}</p>
+</div>
+
+<p>{{name}}</p>
+</div>
+
+<script>
+var mapp=angular.module('mapp',[]);
+
+
+
+mapp.controller('ctrl',function($scope){
+
+$scope.name="Welcome To Thinksurfmedia";
+
+
+});
+
+
+mapp.run(function($rootScope){
+
+$rootScope.name="Hi Welcome to Thinksurfmedia";
+
+
+});
+
+
+
+</script>
+
+
+Angular js Filter:
+
+1.currency format change(currency)
+
+2.a date to a specified format(date)
+
+3.select a subset of items from an array(filter)
+
+4.json-format an object to a json string(json)
+
+5.limitTo: limits an array/string into a specified number of elements/characters
+
+6.lowercase,uppercase
+
+7.number: number to a string
+
+8.orderBy : orders an array by an expression.
+
+
+**filter can be added by using pipe character |.
+
+eg: orderBy:''
+
+<h1>Filter</h1>
+
+<div ng-controller="myfilter">
+<div ng-repeat="x in names  | orderBy:'currency'">
+
+{{x.name+" "+x.currency}}
+</div>
+</div>
+
+</div>
+<script>
+ var app=angular.module("app",[]);
+ 
+ app.controller('myfilter',function($scope){
+ 
+ $scope.names=[
+ 
+ {name:'india',currency:'rupee'},
+ {name:'japan',currency:'jd'},
+ {name:'chaina',currency:'cd'},
+ {name:'canada',currency:'cad'},
+ {name:'australia',currency:'aud'},
+ {name:'uk',currency:'pound'}
+ 
+ ];
+ 
+ 
+ });
+ 
+
+
+</script>
+
+
+Filter an array based on user input:
+
+
+
+<div ng-app="myapp" ng-controller="ctrl">
+<input type="text" ng-model="filtering">
+
+<ul>
+
+<li ng-repeat="x in names | filter:filtering">{{x}}</li>
+
+</ul>
+
+</div>
+<script>
+ 
+ var app=angular.module('myapp',[]);
+app.controller('ctrl',function($scope){
+
+$scope.names=['web','app','seo','smo'];
+
+});
+
+</script>
+
+
+angular js service:
+
+
+angular clients(use $http service to call backend REST api)--->
+
+backend(REST API to receive and deliver json)
+
+
+in angular js you can make your own service or use in-built services
+
+
+
+in angular js , a service is a function , or object.
+
+
+angular js has a about 30 built-in services.
+
+one of  them is the $location service.
+
+
+
+
+The $location service has the methods which return information about the location of the current web-page:
+
+
+
+1. $scope.url=$location.absUrl();{to get the current url}
+
+ 
+$http service:
+
+the $http service is one of the most common used services in angularJs application.the service makes a request
+
+to the server.
+
+and lets your app handle the response.
+
+
+<div ng-controller="ctrl">
+{{myservice}}
+
+</div>
+
+<script>
+ var app=angular.module('myapp',[]);
+ 
+ app.controller('ctrl',function($http,$scope){
+ 
+ $http.get("http://rest-service.guides.spring.io/greeting").then(function(response){
+ 
+ $scope.myservice=response.data;
+ 
+ });
+ 
+ });
+ 
+ 
+</script>
+
+
+Routing in angular js:
+
+The (ngRoute) module helps your application to become a single page application. 
+
+If you want to navigate to different pages in your application , but you also want the application 
+to be a spa,u can use the the ngRoute module.
+
+
+
+The ngRoute module routes your application to different pages without reloading the entire application.
+ 
+
+
+to make your applications ready for routing ,you must include the AngularJs Route module
+
+to show there is ng-view directive
+
+there is also $routeProvider
+
+<body ng-app="myapp">
+<div class="container">
+
+
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#!home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#!about">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#!contact">Contact</a>
+    </li>
+  </ul>
+
+</nav>
+</div>
+
+<div ng-view>
+
+
+</div>
+<script>
+ var app=angular.module("myapp",["ngRoute"]);
+ 
+ app.config(function($routeProvider){
+ 
+ $routeProvider.when("/home",{
+ 
+ template:"<h1>Home</h1>"
+ 
+ })
+ .when("/about",{
+ 
+ template:"<h1>About</h1>"
+ 
+ })
+ .when("/contact",{
+ 
+ template:"<h1>contact</h1>"
+ 
+ })
+ .otherwise({
+ template:"<h1>Nothing Found</h1>"
+ }
+ 
+ )
+ });
+ 
+
+</script>
+
+
+------
+
+ 
+
+
+

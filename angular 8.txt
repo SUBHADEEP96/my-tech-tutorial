@@ -1,0 +1,287 @@
+angular 5
+
+features:
+
+1.Modularity
+
+we arrange component,services,directive togegnther into module
+
+2.consistency
+
+3.Maintainablity
+
+4.Productivity
+
+5.Ability to catch error
+
+
+**
+
+in angular 5 every thing is a component
+
+
+to install
+
+: npm install -g @angular/cli
+
+ng new project-name
+
+
+cd project-name
+
+
+ng-serve
+
+
+
+
+Component in angular:
+
+creating component in node:
+
+--ng generate component component-name
+
+or --ng g c component-name
+
+
+
+after creating component whatever selector i got that i have to put in the 
+
+app.component.html  not in index.html.
+
+
+
+---------Interpolation----------
+
+
+
+{{}}
+
+
+ternary operation:
+
+{{login ? registered : notregistered}}
+
+it means if login then show registered else show notregistered
+
+--writing method in angular---
+
+
+forsize: string='must have 8 char';
+
+   
+   
+specialcharacters:string='there must be a special char';
+   
+   
+
+loginvalidation():string{
+
+return this.forsize  + this.specialcharacters;
+
+
+	   
+   }  (this refers to the instance of the object )
+
+
+---property binding----
+
+in interpolation we use 
+
+type={{button}}
+
+in property-binding we use
+
+[type]="button"
+
+ 
+interpolation vs property binding
+
+interpolation only works only with string value
+
+<!--use of interpolation {{}} and property binding []-->
+
+
+<input type="{{button}}" name="" value="Registered ? Login Here" [class]="classname">
+
+
+<!--interpolation doesn't work here for non integer-->
+
+
+<div hidden={{ishidden}}>power of interpolation and p-binding checking</div>
+
+
+<!--p-binding works here fine with all data types-->
+
+
+<br>
+<div [hidden]="ishidden">For more details <a href="#">contact</a> us</div>
+
+
+<br>
+
+<button [disabled]="ishidden">Visit Our Page</button>
+<br>
+<!--another way of doing binding-->
+
+
+
+<button bind-disabled="ishidden">Visit Our Site</button>
+  
+  
+----Event Binding and property binding------
+
+ <button class="btn btn-primary" (click)="myfunc()">Event Binding</button>
+ 
+ 
+
+<br> <input type="text" name="" [value]="texts">
+
+
+
+   texts: string='';
+   
+   myfunc(){
+	   
+	   console.log('welcome');
+	   this.texts='1234567890';
+	   
+   }
+   
+
+
+---class binding---
+
+class binding is more like a property binding
+
+<!--class binding-->
+<br>
+
+
+<button class="btn btn-danger" [class.active]="isactive">Active class</button>
+
+in component.ts:
+
+isactive:boolean=true;
+
+
+----css class binding----
+
+<!--css class binding-->
+<br>
+
+
+<h1 class="text-danger" [class]='multistyle'>css class binding</h1>
+<br>
+
+
+<!--single change-->
+
+
+<button class="btn btn-primary" [class.singlecss]="singlecsschange">Check Class binding</button>
+
+
+----style binding---
+<br><button [style.color]="inlineColor ? 'blue' : 'yellow' ">style binding</button>
+ 
+
+in cm.ts
+
+inlineColor : boolean= false;
+
+
+---template reference variables----
+
+<input type="email" name="" class="form-control"
+ 
+ #email (click)="getEmail(email.value)"
+ 
+ />
+
+ 
+ <br>
+ <!--another way of doing it-->
+
+
+ <input type="email" name="" class="form-control" 
+ #mail
+ >
+ <br>
+
+
+ <button (click)="getMail(mail.value)">Submit</button>
+ 
+
+
+getEmail(email){
+	
+console.log(email);	
+	
+	
+}
+
+
+
+getMail(mail){
+	
+	console.log(mail);
+	
+	
+}
+
+
+
+--two way data binding---
+component to view nad view to component
+
+
+banana in a box = [()]
+
+
+angular built-in directives are ngModel, ngClass, ngStyle
+
+
+<input [(ngModel)]='num' (click)="getNum()" />
+
+
+num=1234567890;
+
+
+
+getNum(){
+	
+	console.log(this.num);
+	
+}
+
+
+----pipe in angular---
+
+pipe is basically used to format the data
+
+it is used to transform the data at a run time
+
+PIPE
+
+LowerCasePipe
+
+UpperCasePipe
+
+DecimalPipe
+
+CurrencyPipe
+
+DatePipe
+
+ 
+<div class="text-danger">
+Welcome to {{name | uppercase}}
+<br>
+
+Started at {{time|date:"shortDate"}}
+</div>
+
+
+use of ngClass directive allows you to set the css class dynamically for a DOM element.
+
+ 
